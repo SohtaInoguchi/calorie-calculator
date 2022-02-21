@@ -4,6 +4,10 @@
     <string name="input_weight">Enter weight in kg</string>
     <string name="input_height">Enter height in cm</string>
     <string name="input_age">Enter age</string>
-    <string name="input_gender">Enter gender</string>
+
+    <string-array name="gender_select">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
 
 </resources>
