@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">polyglottal_calculator2</string>
+    <string name="input_name">Enter name</string>
+    <string name="input_weight">Enter weight in kg</string>
+    <string name="input_height">Enter height in cm</string>
+    <string name="input_age">Enter age</string>
+    <string name="input_gender">Enter gender</string>
+
+</resources>
