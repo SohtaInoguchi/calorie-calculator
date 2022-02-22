@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner mSpinnerActivity;
     private TextView mTextViewResult;
     private Button mButtonCalc;
+    private Button mButtonSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerActivity = findViewById(R.id.activity_level);
         mTextViewResult = findViewById(R.id.result);
         mButtonCalc = findViewById(R.id.calc_button);
+        mButtonSave = findViewById(R.id.save_button);
+
+        mButtonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    TrainerrModel trainerrModel = new TrainerrModel(1,
+                            Integer.parseInt(mEditTextTargetWeight.getText().toString()),
+                            Integer.parseInt(mEditTextWeight.getText().toString()),
+                            mEditTextName.getText().toString(),
+                            Integer.parseInt(mEditTextHeight.getText().toString()),
+                            Integer.parseInt(mEditTextAge.getText().toString()),
+                            mSpinnerGender.getSelectedItem().toString(),
+                            mSpinnerActivity.getSelectedItem().toString());
+
+                    Toast.makeText(MainActivity.this, trainerrModel.toString(), Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Error creating trainee", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
 
         mButtonCalc.setOnClickListener(new View.OnClickListener() {
             @Override
