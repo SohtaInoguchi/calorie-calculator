@@ -17,11 +17,11 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/input_name"
+            android:id="@+id/target_weight"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/input_name"
+            android:inputType="number"
+            android:hint="@string/target_weight"
             />
 
         <EditText
@@ -30,6 +30,24 @@
             android:layout_height="wrap_content"
             android:hint="@string/input_weight"
             android:inputType="number" />
+
+
+        <DatePicker
+            android:id="@+id/target_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            />
+
+        <EditText
+            android:id="@+id/input_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/input_name"
+            />
+
 
         <EditText
             android:id="@+id/input_height"

@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+
 public class MainActivity extends AppCompatActivity {
+    private EditText mEditTextTargetWeight;
+    private DatePicker mTargetDate;
     private EditText mEditTextWeight;
     private EditText mEditTextHeight;
     private EditText mEditTextName;
@@ -25,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mEditTextWeight = findViewById(R.id.input_weight);
+        mEditTextTargetWeight = findViewById(R.id.target_weight);
+        mTargetDate = findViewById(R.id.target_date);
+
         mEditTextHeight = findViewById(R.id.input_height);
         mEditTextName = findViewById(R.id.input_name);
         mEditTextAge = findViewById(R.id.input_age);
@@ -37,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int weight = Integer.parseInt(mEditTextWeight.getText().toString());
+                int targetWeight = Integer.parseInt(mEditTextName.getText().toString());
+                int weightDiff = targetWeight - weight;
+                int calNeeded = 7200 * weightDiff;
+
+                LocalDate curDate = LocalDate.now();
+                System.out.println(curDate);
+
                 int height = Integer.parseInt(mEditTextHeight.getText().toString());
                 int age = Integer.parseInt(mEditTextAge.getText().toString());
                 String name = mEditTextName.getText().toString();
@@ -65,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
                 double amr = coefficient * bmr;
                 System.out.println(amr);
-                /** mTextViewResult.setText(String.valueOf(amr)); */
                 mTextViewResult.setText(String.format("%4.3f", amr));
 
             }

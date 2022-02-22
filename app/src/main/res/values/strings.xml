@@ -4,6 +4,8 @@
     <string name="input_weight">Enter weight in kg</string>
     <string name="input_height">Enter height in cm</string>
     <string name="input_age">Enter age</string>
+    <string name="target_weight">Enter target weight in kg</string>
+    <string name="target_date">Enter target date</string>
 
     <string-array name="gender_select">
         <item>Male</item>
