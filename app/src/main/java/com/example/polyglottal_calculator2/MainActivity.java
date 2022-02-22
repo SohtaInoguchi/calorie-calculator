@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 int targetWeight = Integer.parseInt(mEditTextTargetWeight.getText().toString());
                 int weightDiff = targetWeight - weight;
                 int calNeeded = 7200 * weightDiff;
+                System.out.println(targetWeight);
 
 //                LocalDate curDate = LocalDate.now();
                 Calendar calenderCur = Calendar.getInstance();
@@ -72,8 +73,9 @@ public class MainActivity extends AppCompatActivity {
                         / (1000 * 60 * 60 * 24))
                         % 365;
 
-                System.out.println(difference_In_Days);
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+                double dailyCal = calNeeded / difference_In_Days;
+
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 
                 int height = Integer.parseInt(mEditTextHeight.getText().toString());
                 int age = Integer.parseInt(mEditTextAge.getText().toString());
@@ -102,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 double amr = coefficient * bmr;
-                System.out.println(amr);
-                mTextViewResult.setText(String.format("%4.3f", amr));
+                double dailyCalTotal = amr + dailyCal;
+                System.out.println(dailyCalTotal);
+                mTextViewResult.setText(String.format("%4.0f", dailyCalTotal) + " kcal");
 
             }
         });
