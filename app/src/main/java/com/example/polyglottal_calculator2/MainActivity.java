@@ -10,7 +10,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mEditTextTargetWeight;
@@ -45,12 +50,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int weight = Integer.parseInt(mEditTextWeight.getText().toString());
-                int targetWeight = Integer.parseInt(mEditTextName.getText().toString());
+                int targetWeight = Integer.parseInt(mEditTextTargetWeight.getText().toString());
                 int weightDiff = targetWeight - weight;
                 int calNeeded = 7200 * weightDiff;
 
-                LocalDate curDate = LocalDate.now();
-                System.out.println(curDate);
+//                LocalDate curDate = LocalDate.now();
+                Calendar calenderCur = Calendar.getInstance();
+                Date curDate = calenderCur.getTime();
+
+                int day = mTargetDate.getDayOfMonth();
+                int month = mTargetDate.getMonth();
+                int year = mTargetDate.getYear();
+                Calendar calender = Calendar.getInstance();
+                calender.set(year, month, day);
+                Date targetDate = calender.getTime();
+
+                long dateDiff = targetDate.getTime() - curDate.getTime();
+
+                long difference_In_Days
+                        = (dateDiff
+                        / (1000 * 60 * 60 * 24))
+                        % 365;
+
+                System.out.println(difference_In_Days);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 
                 int height = Integer.parseInt(mEditTextHeight.getText().toString());
                 int age = Integer.parseInt(mEditTextAge.getText().toString());
