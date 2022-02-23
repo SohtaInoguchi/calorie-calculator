@@ -2,6 +2,7 @@ package com.example.polyglottal_calculator2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner mSpinnerActivity;
     private TextView mTextViewResult;
     private Button mButtonCalc;
+    private Button mButtonSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerActivity = findViewById(R.id.activity_level);
         mTextViewResult = findViewById(R.id.result);
         mButtonCalc = findViewById(R.id.calc_button);
+        mButtonSave = findViewById(R.id.save_button);
 
         mButtonCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,10 +108,19 @@ public class MainActivity extends AppCompatActivity {
 
                 double amr = coefficient * bmr;
                 double dailyCalTotal = amr + dailyCal;
+                String dailyCalTotalStr = String.format("%4.0f", dailyCalTotal);
                 System.out.println(dailyCalTotal);
                 mTextViewResult.setText(String.format("%4.0f", dailyCalTotal) + " kcal");
 
+                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+//                intent.putExtra("targetCalorie", Double.toString(dailyCalTotal));
+                intent.putExtra("targetCalorie", dailyCalTotalStr);
+                startActivity(intent);
+
             }
         });
+
     }
+
+
 }

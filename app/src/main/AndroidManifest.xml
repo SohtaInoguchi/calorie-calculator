@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Polyglottal_calculator2">
         <activity
+            android:name=".DisplayActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
