@@ -21,7 +21,7 @@ public class DisplayActivity extends AppCompatActivity {
         String str = intent.getStringExtra("targetCalorie");
 
         System.out.println(str);
-        mTargetCal.setText(str);
+        mTargetCal.setText("Daily target: " + str + " kcal");
 
     }
 }

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditTextAge;
     private Spinner mSpinnerGender;
     private Spinner mSpinnerActivity;
-    private TextView mTextViewResult;
+
     private Button mButtonCalc;
     private Button mButtonSave;
 
@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         mEditTextAge = findViewById(R.id.input_age);
         mSpinnerGender = findViewById(R.id.input_gender);
         mSpinnerActivity = findViewById(R.id.activity_level);
-        mTextViewResult = findViewById(R.id.result);
+
         mButtonCalc = findViewById(R.id.calc_button);
-        mButtonSave = findViewById(R.id.save_button);
+
 
         mButtonCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 double dailyCalTotal = amr + dailyCal;
                 String dailyCalTotalStr = String.format("%4.0f", dailyCalTotal);
                 System.out.println(dailyCalTotal);
-                mTextViewResult.setText(String.format("%4.0f", dailyCalTotal) + " kcal");
+
 
                 Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
 //                intent.putExtra("targetCalorie", Double.toString(dailyCalTotal));
