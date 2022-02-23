@@ -52,8 +52,11 @@ public class MainActivity extends AppCompatActivity {
         mButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                TrainerrModel trainerrModel;
+
                 try {
-                    TrainerrModel trainerrModel = new TrainerrModel(1,
+                    trainerrModel = new TrainerrModel(1,
                             Integer.parseInt(mEditTextTargetWeight.getText().toString()),
                             Integer.parseInt(mEditTextWeight.getText().toString()),
                             mEditTextName.getText().toString(),
@@ -66,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (Exception e){
                     Toast.makeText(MainActivity.this, "Error creating trainee", Toast.LENGTH_SHORT).show();
-
+                    trainerrModel = new TrainerrModel(-1, 0, 0, "error", 0, 0, "error", "error");
                 }
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
+                boolean success = dataBaseHelper.addOne(trainerrModel);
+                Toast.makeText(MainActivity.this, "success" + success, Toast.LENGTH_SHORT).show();
 
             }
         });
