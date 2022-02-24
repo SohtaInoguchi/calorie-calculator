@@ -2,11 +2,16 @@ package com.example.polyglottal_calculator2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "id";
@@ -39,8 +44,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean addOne(TrainerrModel trainerrModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        String createTableStatement = "CREATE TABLE " + TRAINEE_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_TARGET_WEIGHT + " INT, " + COLUMN_WEIGHT + " INT, " + COLUMN_NAME + " TEXT, " + COLUMN_HEIGHT + " INT, " + COLUMN_AGE + " INT, " + COLUMN_GENDER + " TEXT, " + COLUMN_ACTIVE_LEVEL + " TEXT)";
-        db.execSQL(createTableStatement);
+//        String createTableStatement = "CREATE TABLE " + TRAINEE_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_TARGET_WEIGHT + " INT, " + COLUMN_WEIGHT + " INT, " + COLUMN_NAME + " TEXT, " + COLUMN_HEIGHT + " INT, " + COLUMN_AGE + " INT, " + COLUMN_GENDER + " TEXT, " + COLUMN_ACTIVE_LEVEL + " TEXT)";
+//        db.execSQL(createTableStatement);
 
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TARGET_WEIGHT, trainerrModel.getTargetWeight());
@@ -59,5 +64,39 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public List<TrainerrModel> getEveryone(String nameToSearch) {
+
+        List<TrainerrModel> returnList = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + TRAINEE_TABLE;
+//        String queryString = "SELECT target_weight FROM " + TRAINEE_TABLE + "WHERE name = ?";
+//        SQLiteDatabase db =
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                int targetWeight = cursor.getInt(1);
+                int weight = cursor.getInt(2);
+                String name = cursor.getString(3);
+                int height = cursor.getInt(4);
+                int age = cursor.getInt((5));
+                String gender = cursor.getString(6);
+                String activeLevel = cursor.getString(7);
+
+                TrainerrModel newTrainerrModel = new TrainerrModel(id, targetWeight, weight, name, height, age, gender, activeLevel);
+                returnList.add(newTrainerrModel);
+            } while (cursor.moveToNext());
+        }
+        else {
+
+        }
+
+        cursor.close();
+        db.close();
+        return returnList;
     }
 }

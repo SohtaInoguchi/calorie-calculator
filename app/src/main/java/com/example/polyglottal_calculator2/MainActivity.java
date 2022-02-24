@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
 
                 TrainerrModel trainerrModel;
 
@@ -145,11 +144,14 @@ public class MainActivity extends AppCompatActivity {
                 String dailyCalTotalStr = String.format("%4.0f", dailyCalTotal);
                 System.out.println(dailyCalTotal);
 
-
-                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                        Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
 //                intent.putExtra("targetCalorie", Double.toString(dailyCalTotal));
                 intent.putExtra("targetCalorie", dailyCalTotalStr);
+                intent.putExtra("name", name);
                 startActivity(intent);
+
+
+
 
             }
         });
