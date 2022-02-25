@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             mSpinnerGender.getSelectedItem().toString(),
                             mSpinnerActivity.getSelectedItem().toString());
 
-                    Toast.makeText(MainActivity.this, trainerrModel.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e){
                     Toast.makeText(MainActivity.this, "Error creating trainee", Toast.LENGTH_SHORT).show();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
                 boolean success = dataBaseHelper.addOne(trainerrModel);
-                Toast.makeText(MainActivity.this, "success" + success, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "success" + success, Toast.LENGTH_SHORT).show();
 
             }
         });
