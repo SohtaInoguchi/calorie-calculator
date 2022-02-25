@@ -3,6 +3,7 @@ package com.example.polyglottal_calculator2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,12 +11,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +50,36 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerActivity = findViewById(R.id.activity_level);
 
         mButtonCalc = findViewById(R.id.calc_button);
+        mButtonSave = findViewById(R.id.save_button);
+
+        mButtonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TrainerrModel trainerrModel;
+
+                try {
+                    trainerrModel = new TrainerrModel(1,
+                            Integer.parseInt(mEditTextTargetWeight.getText().toString()),
+                            Integer.parseInt(mEditTextWeight.getText().toString()),
+                            mEditTextName.getText().toString(),
+                            Integer.parseInt(mEditTextHeight.getText().toString()),
+                            Integer.parseInt(mEditTextAge.getText().toString()),
+                            mSpinnerGender.getSelectedItem().toString(),
+                            mSpinnerActivity.getSelectedItem().toString());
+
+                    Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Error creating trainee", Toast.LENGTH_SHORT).show();
+                    trainerrModel = new TrainerrModel(-1, 0, 0, "error", 0, 0, "error", "error");
+                }
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
+                boolean success = dataBaseHelper.addOne(trainerrModel);
+//                Toast.makeText(MainActivity.this, "success" + success, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
         mButtonCalc.setOnClickListener(new View.OnClickListener() {
@@ -111,11 +144,14 @@ public class MainActivity extends AppCompatActivity {
                 String dailyCalTotalStr = String.format("%4.0f", dailyCalTotal);
                 System.out.println(dailyCalTotal);
 
-
-                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                        Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
 //                intent.putExtra("targetCalorie", Double.toString(dailyCalTotal));
                 intent.putExtra("targetCalorie", dailyCalTotalStr);
+                intent.putExtra("name", name);
                 startActivity(intent);
+
+
+
 
             }
         });
