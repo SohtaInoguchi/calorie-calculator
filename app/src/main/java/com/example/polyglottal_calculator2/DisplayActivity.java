@@ -37,11 +37,11 @@ public class DisplayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(DisplayActivity.this);
-                List<TrainerrModel> everyone = dataBaseHelper.getEveryone(nameStr);
-                ArrayAdapter traineeArrayAdapter = new ArrayAdapter<TrainerrModel>(DisplayActivity.this, android.R.layout.simple_list_item_1, everyone);
+//                List<TrainerrModel> everyone = dataBaseHelper.getEveryone(nameStr);
+                List<TraineeModelToDisplay> everyone = dataBaseHelper.getEveryone(nameStr);
+//                ArrayAdapter traineeArrayAdapter = new ArrayAdapter<TrainerrModel>(DisplayActivity.this, android.R.layout.simple_list_item_1, everyone);
+                ArrayAdapter traineeArrayAdapter = new ArrayAdapter<TraineeModelToDisplay>(DisplayActivity.this, android.R.layout.simple_list_item_1, everyone);
                 mTraineeList.setAdapter((traineeArrayAdapter));
-//                Toast.makeText(DisplayActivity.this, everyone.toString(), Toast.LENGTH_SHORT).show();
-
 
             }
         });

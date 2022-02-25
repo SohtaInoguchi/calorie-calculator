@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,18 +70,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<TrainerrModel> getEveryone(String nameToDisplay) {
-        System.out.println(nameToDisplay.getClass());
-        List<TrainerrModel> returnList = new ArrayList<>();
+//    public List<TrainerrModel> getEveryone(String nameToDisplay) {
+    public List<TraineeModelToDisplay> getEveryone(String nameToDisplay) {
+//        List<TrainerrModel> returnList = new ArrayList<>();
+        List<TraineeModelToDisplay> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-//        String queryString = "SELECT * FROM " + TRAINEE_TABLE;
         String userName = nameToDisplay;
         String queryString = "SELECT * FROM " + TRAINEE_TABLE + " WHERE " + COLUMN_NAME + " = " + userName;
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + TRAINEE_TABLE + " WHERE " + COLUMN_NAME + " = ?", new String[]{userName});
 
-//        Cursor cursor = db.rawQuery(queryString, null);
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
@@ -92,7 +92,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String gender = cursor.getString(6);
                 String activeLevel = cursor.getString(7);
 
-                TrainerrModel newTrainerrModel = new TrainerrModel(id, targetWeight, weight, name, height, age, gender, activeLevel);
+//                TrainerrModel newTrainerrModel = new TrainerrModel(id, targetWeight, weight, name, height, age, gender, activeLevel);
+                TraineeModelToDisplay newTrainerrModel = new TraineeModelToDisplay(name, targetWeight, weight, height, age, activeLevel);
+                System.out.println((newTrainerrModel.toString()));
                 returnList.add(newTrainerrModel);
             } while (cursor.moveToNext());
         }

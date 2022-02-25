@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
                 boolean success = dataBaseHelper.addOne(trainerrModel);
-//                Toast.makeText(MainActivity.this, "success" + success, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -149,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("targetCalorie", dailyCalTotalStr);
                 intent.putExtra("name", name);
                 startActivity(intent);
-
-
-
 
             }
         });
