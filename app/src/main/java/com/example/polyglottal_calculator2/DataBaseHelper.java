@@ -9,7 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,16 +69,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<TrainerrModel> getEveryone(String nameToSearch) {
-
+    public List<TrainerrModel> getEveryone(String nameToDisplay) {
+        System.out.println(nameToDisplay.getClass());
         List<TrainerrModel> returnList = new ArrayList<>();
-
-        String queryString = "SELECT * FROM " + TRAINEE_TABLE;
-//        String queryString = "SELECT target_weight FROM " + TRAINEE_TABLE + "WHERE name = ?";
-//        SQLiteDatabase db =
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString, null);
+
+//        String queryString = "SELECT * FROM " + TRAINEE_TABLE;
+        String userName = nameToDisplay;
+        String queryString = "SELECT * FROM " + TRAINEE_TABLE + " WHERE " + COLUMN_NAME + " = " + userName;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TRAINEE_TABLE + " WHERE " + COLUMN_NAME + " = ?", new String[]{userName});
+
+//        Cursor cursor = db.rawQuery(queryString, null);
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
