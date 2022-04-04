@@ -2,9 +2,12 @@ package com.example.polyglottal_calculator2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Credentials;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import io.realm.Realm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,10 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonCalc;
     private Button mButtonSave;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Realm.init(this);
 
         mEditTextWeight = findViewById(R.id.input_weight);
         mEditTextTargetWeight = findViewById(R.id.target_weight);
