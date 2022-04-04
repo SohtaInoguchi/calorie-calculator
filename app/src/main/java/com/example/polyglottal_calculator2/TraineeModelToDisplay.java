@@ -20,12 +20,12 @@ public class TraineeModelToDisplay {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
-                ", targetWeight=" + targetWeight +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", age=" + age +
-                ", activeLevel='" + activeLevel + '\'';
+        return "Name='" + name + '\'' +
+                ", TargetWeight=" + targetWeight +
+                ", Weight=" + weight +
+                ", Height=" + height +
+                ", Age=" + age +
+                ", ActiveLevel='" + activeLevel + '\'';
     }
 
     public String getName() {

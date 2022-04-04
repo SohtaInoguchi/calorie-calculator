@@ -70,9 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public List<TrainerrModel> getEveryone(String nameToDisplay) {
     public List<TraineeModelToDisplay> getEveryone(String nameToDisplay) {
-//        List<TrainerrModel> returnList = new ArrayList<>();
         List<TraineeModelToDisplay> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -92,7 +90,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String gender = cursor.getString(6);
                 String activeLevel = cursor.getString(7);
 
-//                TrainerrModel newTrainerrModel = new TrainerrModel(id, targetWeight, weight, name, height, age, gender, activeLevel);
                 TraineeModelToDisplay newTrainerrModel = new TraineeModelToDisplay(name, targetWeight, weight, height, age, activeLevel);
                 System.out.println((newTrainerrModel.toString()));
                 returnList.add(newTrainerrModel);
