@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 int targetWeight = Integer.parseInt(mEditTextTargetWeight.getText().toString());
                 int weightDiff = targetWeight - weight;
                 int calNeeded = 7200 * weightDiff;
-                System.out.println(targetWeight);
 
 //                LocalDate curDate = LocalDate.now();
                 Calendar calenderCur = Calendar.getInstance();
