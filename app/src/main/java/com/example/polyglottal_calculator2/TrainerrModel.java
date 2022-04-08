@@ -1,7 +1,6 @@
 package com.example.polyglottal_calculator2;
 
 public class TrainerrModel {
-
     private int id;
     private int targetWeight;
     private int weight;
@@ -12,7 +11,6 @@ public class TrainerrModel {
     private String activeLevel;
 
     //constructor
-
     public TrainerrModel(int id, int targetWeight, int weight, String name, int height, int age, String gender, String activeLevel) {
         this.id = id;
         this.targetWeight = targetWeight;
@@ -24,12 +22,7 @@ public class TrainerrModel {
         this.activeLevel = activeLevel;
     }
 
-    public TrainerrModel() {
-    }
-
     //toString
-
-
     @Override
     public String toString() {
         return "TrainerrModel{" +

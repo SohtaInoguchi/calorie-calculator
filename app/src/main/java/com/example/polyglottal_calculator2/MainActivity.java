@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditTextAge;
     private Spinner mSpinnerGender;
     private Spinner mSpinnerActivity;
-
     private Button mButtonCalc;
     private Button mButtonSave;
 
@@ -62,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 TrainerrModel trainerrModel;
-
                 try {
                     trainerrModel = new TrainerrModel(1,
                             Integer.parseInt(mEditTextTargetWeight.getText().toString()),
