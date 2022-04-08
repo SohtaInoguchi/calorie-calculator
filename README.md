@@ -7,4 +7,16 @@ Simple calculator for daily calorie intake for those who needs to increase their
 ## Installation
 1. Git clone the repo to local machine.
 2. Open it with [Android Studio](https://developer.android.com/studio)
+3. Run with preferred emulator
 
+## Usage
+1. Enter target weight, current weight, the date you'd like to achieve the target weitht, name, height (cm), age, gender and activity level
+2. Press SAVE 
+3. Press CALCULATE
+4. Press DISPLAY TARGET to see the information you entered. 
+
+## Built with
+[Java](https://dev.java/)
+[XML](https://developer.mozilla.org/en-US/docs/Web/XML)
+[Android Studio](https://developer.android.com/studio)
+[SQLite](https://www.sqlite.org/index.html)
