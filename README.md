@@ -16,7 +16,7 @@ Simple calculator for daily calorie intake for those who needs to increase their
 4. Press DISPLAY TARGET to see the information you entered. 
 
 ## Built with
-[Java](https://dev.java/)
-[XML](https://developer.mozilla.org/en-US/docs/Web/XML)
-[Android Studio](https://developer.android.com/studio)
+[Java](https://dev.java/)<br>
+[XML](https://developer.mozilla.org/en-US/docs/Web/XML)<br>
+[Android Studio](https://developer.android.com/studio)<br>
 [SQLite](https://www.sqlite.org/index.html)
