@@ -48,8 +48,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean addOne(TrainerrModel trainerrModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-//        String createTableStatement = "CREATE TABLE " + TRAINEE_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_TARGET_WEIGHT + " INT, " + COLUMN_WEIGHT + " INT, " + COLUMN_NAME + " TEXT, " + COLUMN_HEIGHT + " INT, " + COLUMN_AGE + " INT, " + COLUMN_GENDER + " TEXT, " + COLUMN_ACTIVE_LEVEL + " TEXT)";
-//        db.execSQL(createTableStatement);
+        System.out.println(db);
+        String createTableStatement = "CREATE TABLE IF NOT EXISTS " + TRAINEE_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_TARGET_WEIGHT + " INT, " + COLUMN_WEIGHT + " INT, " + COLUMN_NAME + " TEXT, " + COLUMN_HEIGHT + " INT, " + COLUMN_AGE + " INT, " + COLUMN_GENDER + " TEXT, " + COLUMN_ACTIVE_LEVEL + " TEXT)";
+        db.execSQL(createTableStatement);
 
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TARGET_WEIGHT, trainerrModel.getTargetWeight());

@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonCalc = findViewById(R.id.calc_button);
         mButtonSave = findViewById(R.id.save_button);
 
+
         mButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
