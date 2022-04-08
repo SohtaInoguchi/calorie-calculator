@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonCalc;
     private Button mButtonSave;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,17 +76,14 @@ public class MainActivity extends AppCompatActivity {
                             mSpinnerActivity.getSelectedItem().toString());
 
                     Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-
                 } catch (Exception e){
                     Toast.makeText(MainActivity.this, "Error creating trainee", Toast.LENGTH_SHORT).show();
                     trainerrModel = new TrainerrModel(-1, 0, 0, "error", 0, 0, "error", "error");
                 }
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
                 boolean success = dataBaseHelper.addOne(trainerrModel);
-
             }
         });
-
 
         mButtonCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 int calNeeded = 7200 * weightDiff;
                 System.out.println(targetWeight);
 
-//                LocalDate curDate = LocalDate.now();
                 Calendar calenderCur = Calendar.getInstance();
                 Date curDate = calenderCur.getTime();
 
@@ -118,9 +112,6 @@ public class MainActivity extends AppCompatActivity {
                         % 365;
 
                 double dailyCal = calNeeded / difference_In_Days;
-
-//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
-
                 int height = Integer.parseInt(mEditTextHeight.getText().toString());
                 int age = Integer.parseInt(mEditTextAge.getText().toString());
                 String name = mEditTextName.getText().toString();
@@ -153,15 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(dailyCalTotal);
 
                         Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
-//                intent.putExtra("targetCalorie", Double.toString(dailyCalTotal));
                 intent.putExtra("targetCalorie", dailyCalTotalStr);
                 intent.putExtra("name", name);
                 startActivity(intent);
-
             }
         });
-
     }
-
-
 }

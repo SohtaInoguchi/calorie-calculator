@@ -74,7 +74,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public List<TraineeModelToDisplay> getEveryone(String nameToDisplay) {
         List<TraineeModelToDisplay> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-
         String userName = nameToDisplay;
         String queryString = "SELECT * FROM " + TRAINEE_TABLE + " WHERE " + COLUMN_NAME + " = " + userName;
 

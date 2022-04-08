@@ -40,10 +40,7 @@ public class DisplayActivity extends AppCompatActivity {
                 List<TraineeModelToDisplay> everyone = dataBaseHelper.getEveryone(nameStr);
                 ArrayAdapter traineeArrayAdapter = new ArrayAdapter<TraineeModelToDisplay>(DisplayActivity.this, android.R.layout.simple_list_item_1, everyone);
                 mTraineeList.setAdapter((traineeArrayAdapter));
-
             }
         });
     }
-
-
 }
